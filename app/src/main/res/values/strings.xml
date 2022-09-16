@@ -4,4 +4,6 @@
     <string name="instruction_label">Choose the button with the greater value:\n\n Points will be given for correct answers, and taken away for incorrect answers.</string>
     <string name="score_intro_label">Tap either button to begin play.</string>
     <string name="score_label">Your Score: %d</string>
+    <string name="constant_label">Values are constant.</string>
+    <string name="variable_label">Current %c value: %d</string>
 </resources>

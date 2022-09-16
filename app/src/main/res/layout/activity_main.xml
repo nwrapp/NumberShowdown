@@ -32,6 +32,19 @@
         app:layout_constraintTop_toBottomOf="@+id/header_textView" />
 
     <TextView
+        android:id="@+id/variable_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/score_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_textView"
+        app:layout_constraintVertical_bias="0.008" />
+
+    <TextView
         android:id="@+id/score_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
