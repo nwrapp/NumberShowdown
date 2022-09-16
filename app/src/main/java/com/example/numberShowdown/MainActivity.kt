@@ -18,19 +18,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val scoreTextView: TextView = findViewById(R.id.score_textView)
         val leftButton: Button = findViewById(R.id.left_button)
-        val rightButton: Button = findViewById(R.id.right_button)
-
-        refreshNumberButtons(leftButton, rightButton)
-
         leftButton.setOnClickListener {
-            buttonPressed(0, leftButton, rightButton, scoreTextView)
+            buttonPressed(0)
         }
 
+        val rightButton: Button = findViewById(R.id.right_button)
         rightButton.setOnClickListener {
-            buttonPressed(1, leftButton, rightButton, scoreTextView)
+            buttonPressed(1)
         }
+
+        refreshNumberButtons()
     }
 
     private fun refreshButtonValues() {
@@ -47,7 +45,9 @@ class MainActivity : AppCompatActivity() {
         rightDisplay = rightValue.toString()
     }
 
-    private fun updateButtonText(l: Button, r: Button) {
+    private fun updateButtonText() {
+        val l: Button = findViewById(R.id.left_button)
+        val r: Button = findViewById(R.id.right_button)
         l.text = leftDisplay
         r.text = rightDisplay
     }
@@ -56,13 +56,13 @@ class MainActivity : AppCompatActivity() {
         return s > t
     }
 
-    private fun refreshNumberButtons(l: Button, r: Button) {
+    private fun refreshNumberButtons() {
         refreshButtonValues()
         refreshDisplayVariables()
-        updateButtonText(l, r)
+        updateButtonText()
     }
 
-    private fun buttonPressed(signal: Int, l: Button, r: Button, score: TextView) {
+    private fun buttonPressed(signal: Int) {
         val result: Boolean = if (signal == 0) {
             // Left Button Press
             compareButtonValues(leftValue, rightValue)
@@ -72,17 +72,18 @@ class MainActivity : AppCompatActivity() {
         }
         if (result) {
             Toast.makeText(this,"Correct! +1 Point", Toast.LENGTH_SHORT).show()
-            updateScore(1, score)
+            updateScore(1)
         } else {
             Toast.makeText(this,"Incorrect! -1 Point", Toast.LENGTH_SHORT).show()
-            updateScore(-1, score)
+            updateScore(-1)
         }
-        refreshNumberButtons(l, r)
+        refreshNumberButtons()
     }
 
-    private fun updateScore(i: Int, score: TextView) {
+    private fun updateScore(i: Int) {
         playerScore += i
         val text = getString(R.string.score_label, playerScore)
+        val score: TextView = findViewById(R.id.score_textView)
         score.text = text
     }
 }
