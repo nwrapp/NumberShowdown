@@ -31,6 +31,30 @@ class MainActivity : AppCompatActivity() {
         refreshNumberButtons()
     }
 
+    private fun buttonPressed(signal: Int) {
+        val result: Boolean = if (signal == 0) {
+            // Left Button Press
+            compareButtonValues(leftValue, rightValue)
+        } else {
+            // Right Button Press
+            compareButtonValues(rightValue, leftValue)
+        }
+        if (result) {
+            Toast.makeText(this,"Correct! +1 Point", Toast.LENGTH_SHORT).show()
+            updateScore(1)
+        } else {
+            Toast.makeText(this,"Incorrect! -1 Point", Toast.LENGTH_SHORT).show()
+            updateScore(-1)
+        }
+        refreshNumberButtons()
+    }
+
+    private fun refreshNumberButtons() {
+        refreshButtonValues()
+        refreshDisplayVariables()
+        updateButtonText()
+    }
+
     private fun refreshButtonValues() {
         leftValue = nextInt(100)
         rightValue = nextInt(100)
@@ -54,30 +78,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun compareButtonValues(s: Int, t: Int): Boolean {
         return s > t
-    }
-
-    private fun refreshNumberButtons() {
-        refreshButtonValues()
-        refreshDisplayVariables()
-        updateButtonText()
-    }
-
-    private fun buttonPressed(signal: Int) {
-        val result: Boolean = if (signal == 0) {
-            // Left Button Press
-            compareButtonValues(leftValue, rightValue)
-        } else {
-            // Right Button Press
-            compareButtonValues(rightValue, leftValue)
-        }
-        if (result) {
-            Toast.makeText(this,"Correct! +1 Point", Toast.LENGTH_SHORT).show()
-            updateScore(1)
-        } else {
-            Toast.makeText(this,"Incorrect! -1 Point", Toast.LENGTH_SHORT).show()
-            updateScore(-1)
-        }
-        refreshNumberButtons()
     }
 
     private fun updateScore(i: Int) {
