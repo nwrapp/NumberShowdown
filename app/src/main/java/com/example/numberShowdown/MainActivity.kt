@@ -1,3 +1,4 @@
+// author @Nolan Rapp
 package com.example.numberShowdown
 
 import androidx.appcompat.app.AppCompatActivity
